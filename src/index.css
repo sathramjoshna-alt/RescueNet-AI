@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Aurora Blue + Emerald Design System ───────────────────────────────── */
+:root {
+  --aurora-dark:    #0b1628;
+  --aurora-mid:     #0f2040;
+  --aurora-light:   #163356;
+  --aurora-blue:    #1a4a8a;
+  --sky-blue:       #2d6fbd;
+  --horizon:        #3b82f6;
+  --emerald-glow:   #10b981;
+  --emerald-soft:   #34d399;
+  --teal-accent:    #06b6d4;
+  --glass-bg:       rgba(15, 32, 64, 0.65);
+  --glass-border:   rgba(59, 130, 246, 0.18);
+  --card-bg:        rgba(22, 51, 86, 0.55);
+  --card-border:    rgba(59, 130, 246, 0.15);
+  --surface:        rgba(15, 32, 64, 0.8);
+  --text-primary:   #e2e8f0;
+  --text-muted:     #94a3b8;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: linear-gradient(160deg, #0b1628 0%, #0f2040 40%, #0d1e38 70%, #0b1628 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── Custom scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0b1628; }
+::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.55); }
+
+/* ─── Glassmorphism ─────────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1rem 1.125rem;
+  box-shadow: 0 4px 24px rgba(11, 22, 40, 0.45), 0 1px 4px rgba(59,130,246,0.08);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+/* ─── Aurora background accent ──────────────────────────────────────────── */
+.aurora-bg {
+  background: linear-gradient(160deg, #0b1628 0%, #0f2040 35%, #112038 65%, #0b1628 100%);
+  position: relative;
+}
+.aurora-bg::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(30,80,160,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora-bg::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(16,185,129,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Subtle star field (minimal, professional) ─────────────────────────── */
+.stars-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ─── Text styles ───────────────────────────────────────────────────────── */
+.neon-text {
+  color: #3b82f6;
+  text-shadow: 0 0 12px rgba(59,130,246,0.45);
+}
+.neon-text-green {
+  color: #10b981;
+  text-shadow: 0 0 12px rgba(16,185,129,0.4);
+}
+.neon-text-purple {
+  color: #818cf8;
+  text-shadow: 0 0 12px rgba(129,140,248,0.4);
+}
+.neon-text-teal {
+  color: #06b6d4;
+  text-shadow: 0 0 10px rgba(6,182,212,0.35);
+}
+
+/* ─── Glow effects ──────────────────────────────────────────────────────── */
+.glow-blue   { box-shadow: 0 0 18px rgba(59,130,246,0.28); }
+.glow-green  { box-shadow: 0 0 18px rgba(16,185,129,0.28); }
+.glow-purple { box-shadow: 0 0 18px rgba(129,140,248,0.25); }
+.glow-red    { box-shadow: 0 0 18px rgba(244,63,94,0.32); }
+.glow-teal   { box-shadow: 0 0 18px rgba(6,182,212,0.28); }
+
+/* ─── Card hover ────────────────────────────────────────────────────────── */
+.hover-glow:hover {
+  border-color: rgba(59,130,246,0.38) !important;
+  box-shadow: 0 8px 32px rgba(11,22,40,0.6), 0 0 20px rgba(59,130,246,0.12);
+  transform: translateY(-2px);
+}
+
+/* ─── Status dots ───────────────────────────────────────────────────────── */
+.status-online  { background: #10b981; box-shadow: 0 0 7px #10b981; }
+.status-warning { background: #f59e0b; box-shadow: 0 0 7px #f59e0b; }
+.status-offline { background: #f43f5e; box-shadow: 0 0 7px #f43f5e; }
+
+/* ─── Gradient backgrounds ──────────────────────────────────────────────── */
+.bg-space-gradient {
+  background: linear-gradient(160deg, #0b1628 0%, #0f2040 50%, #0b1628 100%);
+}
+.bg-card-gradient {
+  background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(16,185,129,0.04) 100%);
+}
+.bg-aurora-card {
+  background: linear-gradient(135deg, rgba(26,74,138,0.18) 0%, rgba(15,32,64,0.7) 100%);
+}
+
+/* ─── Progress bar ──────────────────────────────────────────────────────── */
+.progress-bar-fill { transition: width 0.8s ease-in-out; }
+
+/* ─── Critical blink ────────────────────────────────────────────────────── */
+@keyframes criticalBlink {
+  0%, 100% { opacity: 1; background: rgba(244,63,94,0.12); }
+  50%       { opacity: 0.8; background: rgba(244,63,94,0.22); }
+}
+.critical-blink { animation: criticalBlink 1.2s ease-in-out infinite; }
+
+/* ─── Badge pulse ───────────────────────────────────────────────────────── */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244,63,94,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(244,63,94,0); }
+}
+.badge-pulse { animation: badgePulse 1.8s infinite; }
+
+/* ─── Spinner ───────────────────────────────────────────────────────────── */
+.spinner {
+  border: 2px solid rgba(59,130,246,0.15);
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Animated border gradient ─────────────────────────────────────────── */
+.animated-border { position: relative; overflow: hidden; }
+.animated-border::before {
+  content: '';
+  position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #10b981, #06b6d4, #3b82f6);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradientShift 4s ease infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Leaflet map overrides ─────────────────────────────────────────────── */
+.leaflet-container {
+  background: #0b1628 !important;
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 12px;
+}
+.leaflet-tile {
+  filter: brightness(0.62) saturate(0.75) hue-rotate(195deg);
+}
+.leaflet-control-zoom a {
+  background: var(--card-bg) !important;
+  color: #94a3b8 !important;
+  border-color: var(--card-border) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #0f2040 !important;
+  border: 1px solid rgba(59,130,246,0.2) !important;
+  color: #e2e8f0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(11,22,40,0.6) !important;
+}
+.leaflet-popup-tip { background: #0f2040 !important; }
+
+/* ─── Font utilities ────────────────────────────────────────────────────── */
+.font-orbitron { font-family: 'Orbitron', monospace; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+
+/* ─── Typing cursor ─────────────────────────────────────────────────────── */
+.typing-cursor::after { content: '|'; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ─── Page transitions ──────────────────────────────────────────────────── */
+.page-enter         { opacity: 0; transform: translateY(16px); }
+.page-enter-active  { opacity: 1; transform: translateY(0); transition: opacity 0.35s ease, transform 0.35s ease; }
+
+/* ─── Aurora orbit decorations ──────────────────────────────────────────── */
+.orbit-ring {
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* ─── Gradient buttons ──────────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, #1a4a8a 0%, #2d6fbd 100%);
+  color: #fff;
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 10px;
+  padding: 0.625rem 1.25rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 12px rgba(26,74,138,0.3);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2d6fbd 0%, #3b82f6 100%);
+  box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+  transform: translateY(-1px);
+}
+
+.btn-emerald {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #fff;
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 10px;
+  padding: 0.625rem 1.25rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 12px rgba(16,185,129,0.2);
+}
+.btn-emerald:hover {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  box-shadow: 0 4px 20px rgba(16,185,129,0.3);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #be123c 0%, #f43f5e 100%);
+  color: #fff;
+  border: 1px solid rgba(244,63,94,0.3);
+  border-radius: 10px;
+  padding: 0.625rem 1.25rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-danger:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ─── Notification slide-in ─────────────────────────────────────────────── */
+@keyframes slideInRight {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+.notif-enter { animation: slideInRight 0.35s ease forwards; }
+
+/* ─── ETA countdown pulse ───────────────────────────────────────────────── */
+@keyframes etaPulse {
+  0%,100% { color: #34d399; }
+  50%     { color: #10b981; }
+}
+.eta-pulse { animation: etaPulse 2s ease-in-out infinite; }
+
+/* ─── Mission stage progress ────────────────────────────────────────────── */
+.stage-active {
+  background: rgba(59,130,246,0.15);
+  border-color: rgba(59,130,246,0.4);
+}
+.stage-done {
+  background: rgba(16,185,129,0.1);
+  border-color: rgba(16,185,129,0.35);
+}
+.stage-pending {
+  background: rgba(15,32,64,0.5);
+  border-color: rgba(59,130,246,0.1);
+}
+
+/* ─── Scan line effect ──────────────────────────────────────────────────── */
+@keyframes scanLine {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* ─── Pulse rings ───────────────────────────────────────────────────────── */
+@keyframes pulseRing {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* ─── Role badge colors ─────────────────────────────────────────────────── */
+.role-admin   { background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); color: #a78bfa; }
+.role-rescue  { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.3); color: #34d399; }
+.role-user    { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.3); color: #60a5fa; }
+
+/* ─── Animated orbit line ───────────────────────────────────────────────── */
+@keyframes orbitDash {
+  to { stroke-dashoffset: -100; }
+}
+.orbit-dash { animation: orbitDash 4s linear infinite; }
